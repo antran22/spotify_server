@@ -1,4 +1,4 @@
-package main
+package routes
 
 import (
 	"net/http"
@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestHomePage(t *testing.T) {
+func TestHomePageHandler(t *testing.T) {
 	request, err := http.NewRequest(http.MethodGet, "/home", nil)
 
 	assert.NoError(t, err)
@@ -18,5 +18,6 @@ func TestHomePage(t *testing.T) {
 
 	HomePageHandler(responseRecorder, request)
 
+	assert.NotEmpty(t, responseRecorder.Body.String())
 	cupaloy.SnapshotT(t, responseRecorder.Body.String())
 }
