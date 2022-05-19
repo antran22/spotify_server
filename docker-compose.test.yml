@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  spotify-server:
+    build: ./
+    image: antran2202/spotify-server:latest
+    environment:
+      SPOTIFY_TOKEN_FILE: /token.json
+    volumes:
+      - "./token.json:/token.json:ro"
+
+  sut:
+    image: alpine/curl
+    depends_on:
+      - spotify-server
+    command: /tmp/docker-test.sh
+    volumes:
+      - "./docker-test.sh:/tmp/docker-test.sh:ro"

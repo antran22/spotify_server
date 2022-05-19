@@ -1,0 +1,8 @@
+*
+!api
+!routes
+!template
+!go.mod
+!go.sum
+!*.go
+*_test.go
