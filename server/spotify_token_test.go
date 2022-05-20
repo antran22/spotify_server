@@ -1,4 +1,4 @@
-package api
+package main
 
 import (
 	"bytes"
@@ -28,7 +28,7 @@ func TestParseSpotifyToken(t *testing.T) {
 }
 
 func TestGetSpotifyToken(t *testing.T) {
-	setEnvErr := os.Setenv("SPOTIFY_TOKEN_FILE", "../token.json")
+	setEnvErr := os.Setenv("SPOTIFY_TOKEN_FILE", "./token.json")
 
 	assert.NoError(t, setEnvErr)
 

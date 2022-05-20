@@ -19,8 +19,6 @@ func getMainRouter() *chi.Mux {
 			log.Println(err)
 		}
 	})
-	r.Get("/auth", routes.AuthPageHandler)
-	r.Get("/auth/callback", routes.AuthCallBackHandler)
 	return r
 }
 

@@ -1,11 +1,9 @@
-package api
+package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
 	"os"
 
 	"golang.org/x/oauth2"
@@ -24,14 +22,6 @@ var (
 )
 
 func readSpotifyToken() *oauth2.Token {
-	files, err := ioutil.ReadDir("/")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	for _, file := range files {
-		fmt.Println(file.Name(), file.IsDir())
-	}
 	path := os.Getenv("SPOTIFY_TOKEN_FILE")
 	if path == "" {
 		path = "token.json"
@@ -39,7 +29,7 @@ func readSpotifyToken() *oauth2.Token {
 
 	jsonFile, err := os.Open(path)
 	if err != nil {
-		panic(err)
+		return nil
 	}
 
 	token := parseSpotifyToken(jsonFile)

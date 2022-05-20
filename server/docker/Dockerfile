@@ -2,12 +2,12 @@ FROM golang:alpine AS builder
 
 RUN apk update && apk add --no-cache git
 WORKDIR $GOPATH/src/mypackage/myapp/
-COPY go.mod go.sum ./
+COPY ../go.mod go.sum ./
 
 RUN go mod download
 
 # Build the binary.
-COPY . .
+COPY ../.. .
 
 
 RUN --mount=type=cache,target=/root/.cache/go-build \

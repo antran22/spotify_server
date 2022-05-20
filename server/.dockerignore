@@ -1,6 +1,6 @@
 *
-!api
-!routes
+!server/api
+!server/routes
 !template
 !go.mod
 !go.sum

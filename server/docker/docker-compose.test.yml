@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   spotify-server:
-    build: ./
+    build: ../..
     image: antran2202/spotify-server:latest
     environment:
       SPOTIFY_TOKEN_FILE: /token.json

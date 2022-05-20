@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"testing"
 
@@ -33,14 +32,5 @@ func TestServerIntegration(t *testing.T) {
 		assert.Equal(t, resp.StatusCode, http.StatusOK, "status is not ok")
 
 		cupaloy.SnapshotT(t, body)
-	})
-
-	t.Run("test /auth route", func(t *testing.T) {
-		resp, _ := makeTestRequest(t, testServer, http.MethodGet, "/auth", nil)
-		fmt.Println(resp)
-
-		assert.Equal(t, http.StatusOK, resp.StatusCode)
-
-		assert.Contains(t, resp.Request.URL.String(), "spotify")
 	})
 }
